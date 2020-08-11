@@ -1,3 +1,7 @@
+using System;
+using System.IO;
+using System.Reflection;
+using Application.ValueService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +29,12 @@ namespace JustinBlog {
         });
       });
       services.AddControllers ();
+      services.AddSwaggerGen (c => {
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine (AppContext.BaseDirectory, xmlFile);
+        c.IncludeXmlComments (xmlPath);
+      });
+      services.AddScoped<IValueService, ValueService> ();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +42,11 @@ namespace JustinBlog {
       if (env.IsDevelopment ()) {
         app.UseDeveloperExceptionPage ();
       }
+
+      app.UseSwagger ();
+      app.UseSwaggerUI (c => {
+        c.SwaggerEndpoint ("/swagger/v1/swagger.json", "Justin Blog API");
+      });
 
       app.UseRouting ();
 
