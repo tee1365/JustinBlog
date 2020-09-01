@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from "axios";
+import { toast } from "react-toastify";
 import { IValue } from "../models/valueModel";
+import history from "./routerHistory";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
@@ -7,27 +9,27 @@ const responseBody = (
   response: AxiosResponse
 ): ReturnType<typeof response.data> => response.data;
 
-// axios.interceptors.response.use(undefined, (error) => {
-//   if (error.message === "Network Error" && !error.response) {
-//     toast.error("Connection error!");
-//   } else {
-//     const { status, data, config } = error.response;
-//     if (status === 404) {
-//       history.push("/notfound");
-//     }
-//     if (
-//       status === 400 &&
-//       config.method === "get" &&
-//       data.errors.hasOwnProperty("id")
-//     ) {
-//       history.push("/notfound");
-//     }
-//     if (status === 500) {
-//       toast.error("Server error!");
-//     }
-//   }
-//   throw error.response;
-// });
+axios.interceptors.response.use(undefined, (error) => {
+  if (error.message === "Network Error" && !error.response) {
+    toast.error("Connection error!");
+  } else {
+    const { status, data, config } = error.response;
+    if (status === 404) {
+      history.push("/notfound");
+    }
+    if (
+      status === 400 &&
+      config.method === "get" &&
+      Object.prototype.hasOwnProperty.call(data.errors, "id")
+    ) {
+      history.push("/notfound");
+    }
+    if (status === 500) {
+      toast.error("Server error!");
+    }
+  }
+  throw error.response;
+});
 
 const requests = {
   get: (url: string) => axios.get(url).then(responseBody),
