@@ -10,6 +10,8 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
     "prettier",
+    "prettier/react",
+    "prettier/@typescript-eslint",
   ],
   globals: {
     Atomics: "readonly",
@@ -28,18 +30,13 @@ module.exports = {
     "prettier/prettier": 2,
     "react/jsx-filename-extension": [1, { extensions: [".jsx", ".tsx"] }],
     "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/indent": "off",
     quotes: [2, "double"],
-    "comma-dangle": [
-      "error",
-      {
-        arrays: "only-multiline",
-        objects: "only-multiline",
-        imports: "never",
-        exports: "never",
-        functions: "never",
-      },
-    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "no-param-reassign": 0,
+    "react/display-name": "off",
+    "global-require": 0,
     "import/extensions": [
       "error",
       "ignorePackages",

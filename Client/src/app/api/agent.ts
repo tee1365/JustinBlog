@@ -1,13 +1,11 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import { toast } from "react-toastify";
 import { IValue } from "../models/valueModel";
 import history from "./routerHistory";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
-const responseBody = (
-  response: AxiosResponse
-): ReturnType<typeof response.data> => response.data;
+const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 axios.interceptors.response.use(undefined, (error) => {
   if (error.message === "Network Error" && !error.response) {
@@ -32,11 +30,12 @@ axios.interceptors.response.use(undefined, (error) => {
 });
 
 const requests = {
-  get: (url: string) => axios.get(url).then(responseBody),
-  post: (url: string, body: Record<string, unknown>) =>
-    axios.post(url, body).then(responseBody),
-  put: (url: string, body: Record<string, unknown>) =>
-    axios.put(url, body).then(responseBody),
+  get: (url: string, config?: AxiosRequestConfig) =>
+    axios.get(url, config).then(responseBody),
+  post: <R, B>(url: string, body?: B, config?: AxiosRequestConfig) =>
+    axios.post(url, body, config).then<R>(responseBody),
+  put: <R, B>(url: string, body?: B, config?: AxiosRequestConfig) =>
+    axios.put(url, body, config).then<R>(responseBody),
   del: (url: string) => axios.delete(url).then(responseBody),
 };
 

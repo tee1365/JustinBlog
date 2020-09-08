@@ -30,7 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext js,jsx,ts,tsx ./src"
+    "lint": "eslint --ext js,jsx,ts,tsx ./src",
+    "serve": "cd ../JustinBlog && cross-env dotnet watch run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,6 +53,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^3.8.0",
+    "cross-env": "^7.0.2",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
