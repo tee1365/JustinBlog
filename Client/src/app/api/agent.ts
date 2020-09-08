@@ -30,18 +30,19 @@ axios.interceptors.response.use(undefined, (error) => {
 });
 
 const requests = {
-  get: (url: string, config?: AxiosRequestConfig) =>
-    axios.get(url, config).then(responseBody),
+  get: <R>(url: string, config?: AxiosRequestConfig) =>
+    axios.get<R>(url, config).then(responseBody),
   post: <R, B>(url: string, body?: B, config?: AxiosRequestConfig) =>
-    axios.post(url, body, config).then<R>(responseBody),
+    axios.post<R>(url, body, config).then(responseBody),
   put: <R, B>(url: string, body?: B, config?: AxiosRequestConfig) =>
-    axios.put(url, body, config).then<R>(responseBody),
+    axios.put<R>(url, body, config).then(responseBody),
   del: (url: string) => axios.delete(url).then(responseBody),
 };
 
 const Value = {
-  getValues: (): Promise<IValue[]> => requests.get("/value"),
-  getValue: (id: number): Promise<IValue> => requests.get(`/value/${id}`),
+  getValues: (): Promise<IValue[]> => requests.get<IValue[]>("/value"),
+  getValue: (id: number): Promise<IValue> =>
+    requests.get<IValue>(`/value/${id}`),
 };
 
 export default Value;
