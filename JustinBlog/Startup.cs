@@ -48,14 +48,17 @@ namespace JustinBlog {
         c.SwaggerEndpoint ("/swagger/v1/swagger.json", "Justin Blog API");
       });
 
+      app.UseDefaultFiles ();
+      app.UseStaticFiles ();
+
       app.UseRouting ();
+      app.UseCors ("CorsPolicy");
 
       app.UseAuthorization ();
 
-      app.UseCors ("CorsPolicy");
-
       app.UseEndpoints (endpoints => {
         endpoints.MapControllers ();
+        endpoints.MapFallbackToController ("Index", "Fallback");
       });
     }
   }
