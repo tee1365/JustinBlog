@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
 export const ImageBackground = styled.div<any>`
-  background-image: url(${(props) =>
-    props.image
-      ? props.image
-      : "https://images.unsplash.com/photo-1599760199810-5b5fa281062f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80"}) !important;
+  background-image: url(${(props) => props.image}) !important;
   height: 100vh;
   background-size: cover;
 `;

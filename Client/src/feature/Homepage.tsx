@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "semantic-ui-react";
+import isSameDay from "../app/common/helpers";
 import { AppDispatch } from "../app/redux/rootStore";
 import { fetchImage, getCommon } from "../app/redux/slice/commonSlice";
 import {
@@ -12,10 +13,9 @@ import {
 
 const Homepage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-
-  let image = window.localStorage.getItem("splashPageImage");
+  let { image } = useSelector(getCommon);
   useEffect(() => {
-    if (!image) {
+    if (!isSameDay() || !image) {
       dispatch(fetchImage());
     }
   }, [image, dispatch]);

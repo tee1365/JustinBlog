@@ -1,13 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Axios from "axios";
+import dayjs from "dayjs";
 import type { RootState } from "../rootStore";
+import dayOfYear from "dayjs/plugin/dayOfYear";
 
 interface CommonState {
   image: string;
 }
 
 const initialState: CommonState = {
-  image: "",
+  image: window.localStorage.getItem("splashPageImage") || "",
 };
 
 export const fetchImage = createAsyncThunk("common/fetchImage", async () => {
@@ -17,6 +19,9 @@ export const fetchImage = createAsyncThunk("common/fetchImage", async () => {
     );
     const image: string = imageObj.data.urls.regular;
     window.localStorage.setItem("splashPageImage", image);
+    dayjs.extend(dayOfYear);
+    let day = dayjs().dayOfYear().toString();
+    window.localStorage.setItem("imageDay", day);
     return image;
   } catch (e) {
     console.log(e);
