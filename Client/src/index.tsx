@@ -8,6 +8,7 @@ import store from "./app/redux/rootStore";
 import "semantic-ui-css/semantic.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import history from "./app/api/routerHistory";
+import "./global.css"
 
 ReactDOM.render(
   <React.StrictMode>
