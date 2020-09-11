@@ -5,9 +5,11 @@ import {
   ThunkAction,
   Action,
 } from "@reduxjs/toolkit";
+import commonSlice from "./slice/commonSlice";
 const { reducer: counter } = counterSlice;
+const { reducer: common } = commonSlice;
 
-const rootReducer = combineReducers({ counter });
+const rootReducer = combineReducers({ counter, common });
 
 export const store = configureStore({
   reducer: rootReducer,

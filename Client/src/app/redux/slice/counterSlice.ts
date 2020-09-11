@@ -19,6 +19,6 @@ const counterSlice = createSlice({
   },
 });
 
-export const getCounter = (state: RootState): number => state.counter.value;
+export const getCounter = (state: RootState): CounterState => state.counter;
 
 export default counterSlice;
