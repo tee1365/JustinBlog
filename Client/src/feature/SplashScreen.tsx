@@ -9,7 +9,7 @@ import {
   HomeTitle,
   ImageBackground,
   Overlay,
-} from "../components/HomepageComps";
+} from "../components/SplashScreenComps";
 
 const Homepage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
