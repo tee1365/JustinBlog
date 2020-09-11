@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ImageBackground = styled.div<any>`
+export const ImageBackground = styled.div<{ readonly image: string }>`
   background-image: url(${(props) => props.image}) !important;
   height: 100vh;
   background-size: cover;
