@@ -5,13 +5,13 @@ import isSameDay from "../app/common/helpers";
 import { AppDispatch } from "../app/redux/rootStore";
 import { fetchImage, getCommon } from "../app/redux/slice/commonSlice";
 import {
-  HomeContainer,
-  HomeTitle,
+  SplashContainer,
+  SplashTitle,
   ImageBackground,
   Overlay,
 } from "../components/SplashScreenComps";
 
-const Homepage: React.FC = () => {
+const SplashScreen: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   let { image } = useSelector(getCommon);
   useEffect(() => {
@@ -22,15 +22,15 @@ const Homepage: React.FC = () => {
   return (
     <ImageBackground image={image}>
       <Overlay>
-        <HomeContainer>
-          <HomeTitle>Justin's Blog</HomeTitle>
+        <SplashContainer>
+          <SplashTitle>Justin's Blog</SplashTitle>
           <Button size="huge" inverted>
             Explore
           </Button>
-        </HomeContainer>
+        </SplashContainer>
       </Overlay>
     </ImageBackground>
   );
 };
 
-export default Homepage;
+export default SplashScreen;

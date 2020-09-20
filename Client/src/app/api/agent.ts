@@ -39,10 +39,10 @@ const requests = {
   del: (url: string) => axios.delete(url).then(responseBody),
 };
 
-const Value = {
+const ValueApi = {
   getValues: (): Promise<IValue[]> => requests.get<IValue[]>("/value"),
   getValue: (id: number): Promise<IValue> =>
     requests.get<IValue>(`/value/${id}`),
 };
 
-export default Value;
+export default ValueApi;

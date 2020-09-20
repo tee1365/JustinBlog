@@ -21,7 +21,7 @@ namespace JustinBlog {
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices (IServiceCollection services) {
       services.AddDbContext<DataContext> (opt => {
-        opt.UseSqlite (Configuration.GetConnectionString ("DefaultConnection"));
+        opt.UseSqlite ("Data Source=blogging.db");
       });
       services.AddCors (opt => {
         opt.AddPolicy ("CorsPolicy", policy => {
@@ -58,7 +58,6 @@ namespace JustinBlog {
 
       app.UseEndpoints (endpoints => {
         endpoints.MapControllers ();
-        endpoints.MapFallbackToController ("Index", "Fallback");
       });
     }
   }

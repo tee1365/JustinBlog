@@ -1,8 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Value from "../../feature/Value";
-import Test from "../../feature/Test";
-import SplashScreen from "../../feature/SplashScreen";
+import SplashScreen from "../../pages/SplashScreen";
+import Test from "../../pages/Test";
+import Value from "../../pages/Value";
 
 const App: React.FC = () => (
   <>

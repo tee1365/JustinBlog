@@ -15,7 +15,7 @@ export const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-export const HomeContainer = styled.div`
+export const SplashContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@ export const HomeContainer = styled.div`
   height: 100vh;
 `;
 
-export const HomeTitle = styled.text`
+export const SplashTitle = styled.text`
   font-size: 6rem;
   color: #eee;
   margin-bottom: 6rem;
