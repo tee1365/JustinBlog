@@ -23,7 +23,7 @@ export const SplashContainer = styled.div`
   height: 100vh;
 `;
 
-export const SplashTitle = styled.text`
+export const SplashTitle = styled.h2`
   font-size: 6rem;
   color: #eee;
   margin-bottom: 6rem;

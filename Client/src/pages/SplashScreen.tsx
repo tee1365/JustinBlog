@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 import isSameDay from "../app/common/helpers";
 import { AppDispatch } from "../app/redux/rootStore";
@@ -24,7 +25,7 @@ const SplashScreen: React.FC = () => {
       <Overlay>
         <SplashContainer>
           <SplashTitle>Justin's Blog</SplashTitle>
-          <Button size="huge" inverted>
+          <Button size="huge" inverted as={Link} to="/homepage">
             Explore
           </Button>
         </SplashContainer>

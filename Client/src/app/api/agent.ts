@@ -1,7 +1,6 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import { toast } from "react-toastify";
 import { IValue } from "../models/valueModel";
-import history from "./routerHistory";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
@@ -13,14 +12,14 @@ axios.interceptors.response.use(undefined, (error) => {
   } else {
     const { status, data, config } = error.response;
     if (status === 404) {
-      history.push("/notfound");
+      toast.error("Not found!");
     }
     if (
       status === 400 &&
       config.method === "get" &&
       Object.prototype.hasOwnProperty.call(data.errors, "id")
     ) {
-      history.push("/notfound");
+      toast.error("Not found!");
     }
     if (status === 500) {
       toast.error("Server error!");
